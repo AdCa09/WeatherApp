@@ -1,0 +1,13 @@
+.weekContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px;
+
+    .dayContainer{
+        background-color: grey;
+        width: 150px;
+        height: 200px;
+    }
+
+}
