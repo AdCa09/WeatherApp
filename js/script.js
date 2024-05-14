@@ -1,5 +1,7 @@
-const accessKey = 'UEohjsn4fKHHV1BYUIil-XbcCcEs2cmzoE0nP-cVn8s';
-const weatherKey = 'bee22600aef914f336cc754250da5408';
+// const accessKey = 'UEohjsn4fKHHV1BYUIil-XbcCcEs2cmzoE0nP-cVn8s';
+// const weatherKey = 'bee22600aef914f336cc754250da5408';
+
+// besoin de générer nouvelle clé avec un autre mail jetable
 let input = document.querySelector('input')
 let buttonSearch = document.querySelector('button');
 
