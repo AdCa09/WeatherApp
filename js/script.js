@@ -1,20 +1,30 @@
 // const accessKey = 'UEohjsn4fKHHV1BYUIil-XbcCcEs2cmzoE0nP-cVn8s';
-// const weatherKey = 'bee22600aef914f336cc754250da5408';
+// const weatherKey = 'aeee27fc8c2c81bd6bba8d74d24cd65f';
 
-// besoin de générer nouvelle clé avec un autre mail jetable
-let input = document.querySelector('input')
+let input = document.querySelector('input');
 let buttonSearch = document.querySelector('button');
+let title = document.getElementById('location');
 
-buttonSearch.addEventListener('click', function(){
-    let title = document.getElementById('location');
-    let inputValue = input.value;
-    title.innerHTML = inputValue;
-    fetchCityImage(inputValue);
-    temperature(inputValue);
-    hours(inputValue);
-    humidity(inputValue);
-    actualWind(inputValue);
-})
+input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        title.innerHTML = input.value;
+        fetchData(input.value);
+        event.preventDefault();
+    }
+});
+
+buttonSearch.addEventListener('click', function () {
+    fetchData(input.value);
+});
+
+function fetchData(city) {
+    fetchCityImage(city);
+    temperature(city);
+    humidity(city);
+    actualWind(city);
+    fetchWeeklyWeather(city);
+
+}
 
 function fetchCityImage(city) {
     fetch(`https://api.unsplash.com/photos/random?query=${city}&client_id=${accessKey}`)
@@ -32,10 +42,9 @@ function fetchCityImage(city) {
         });
 }
 
-
 function updateBackgroundImage(imageUrl) {
     document.body.style.backgroundImage = `url('${imageUrl}')`;
-    document.body.style.backgroundSize = ' cover'; 
+    document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundRepeat = 'no-repeat';
 }
 
@@ -46,41 +55,24 @@ function temperature(city) {
         .then((response) => response.json())
         .then(data => {
             const airTemp = data.main.temp;
-            spanTemp.textContent = airTemp + ' °C'; // Affiche la température dans l'élément span avec l'id 'temperature'
+            spanTemp.textContent = airTemp + ' °C';
         })
         .catch(error => {
             console.error('Une erreur s\'est produite lors de la récupération des données de température :', error);
         });
 }
-let actualHours = document.getElementById('actualHours');
-function hours(city) {
-    fetch(`https://worldtimeapi.org/api/timezone/${city}`)
-        .then(response => response.json())
+
+let humidityInfo = document.getElementById('infoHumidity');
+function humidity(city) {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}&units=metric`)
+        .then((response) => response.json())
         .then(data => {
-            const currentTime = new Date(data.utc_datetime);
-            const hours = currentTime.getHours();
-            const minutes = currentTime.getMinutes();
-            const seconds = currentTime.getSeconds();
-            
-            // Formater l'heure
-            const formattedHours = hours < 10 ? `0${hours}` : hours;
-            const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-            const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
-            
-            actualHours.innerHTML =(`Heure actuelle à ${city}: ${formattedHours}:${formattedMinutes}:${formattedSeconds}`);
+            const humidityNow = data.main.humidity;
+            humidityInfo.textContent = 'The humidity is at ' + humidityNow + '%';
         })
         .catch(error => {
-            console.error('Une erreur s\'est produite lors de la récupération de l\'heure :', error);
+            console.error('Une erreur s\'est produite lors de la récupération des données d\'humidité :', error);
         });
-}
-let humidityInfo = document.getElementById('infoHumidity');
-function humidity(city){
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}&units=metric`)
-    .then((response) => response.json())
-    .then(data =>{
-        const humidityNow = data.main.humidity;
-        humidityInfo.textContent = 'The humidity is at ' + humidityNow +'%';
-    })
 }
 
 function actualWind(city) {
@@ -88,11 +80,41 @@ function actualWind(city) {
         .then((response) => response.json())
         .then(data => {
             const windSpeed = data.wind.speed;
-            const windElement = document.getElementById('infoWind'); 
+            const windElement = document.getElementById('infoWind');
             windElement.textContent = windSpeed + ' km/h';
         })
         .catch(error => {
             console.error('Une erreur s\'est produite lors de la récupération des données de vitesse du vent :', error);
         });
 }
+const dayContainers = document.querySelectorAll('.dayContainer');
+
+function fetchWeeklyWeather(city) {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=40&appid=${weatherKey}&units=metric`)
+        .then((response) => response.json())
+        .then(data => {
+            const dailyForecasts = data.list.slice(0, 5);
+            const dayContainers = document.querySelectorAll('.dayContainer');
+
+            dailyForecasts.forEach((forecast, index) => {
+                const dayContainer = dayContainers[index];
+
+
+                const temperatureElement = dayContainer.querySelector(`.temperatureDay${index + 1}`);
+                temperatureElement.textContent = forecast.main.temp + '°C';
+
+
+                const weatherDescription = forecast.weather[0].description;
+                const dayStatusElement = dayContainer.querySelector('.dayStatus');
+                dayStatusElement.textContent = weatherDescription;
+            });
+        })
+        .catch(error => {
+            console.error('Une erreur s\'est produite lors de la récupération des données de prévisions pour une semaine :', error);
+        });
+}
+
+// function imageStatus(city) {
+//
+// }
 
