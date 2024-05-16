@@ -3,12 +3,36 @@
     flex-direction: row;
     justify-content: space-between;
     padding-top: 20px;
+    
+    width: 70%;
+    margin: 0 auto;
+    transition: opacity 1.3s ease-in-out;
 
     .dayContainer{
         background-color: #b0b0b09e;
         width: 150px;
-        height: 200px;
+        height: 250px;
         color: white;
+        border-radius: 10px;
+        
+        h2{
+            text-align: center;
+        }
+        p{
+            font-size: 20px;
+            position: relative;
+            bottom: 20px;
+            text-align: center;
+            
+        }
+        img{
+            position: relative;
+            bottom: 10px;
+            margin: 0 auto;
+            display: block;
+            
+        }
+        
     }
 
 }

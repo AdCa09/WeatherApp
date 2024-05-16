@@ -1,0 +1,119 @@
+@media screen and (max-width: 640px){
+        body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+
+            #extraData{
+                padding-left: 20px; 
+
+                #wind{
+                    padding-right: 20px;
+                }
+            }
+            .container{
+                width: 100%;
+
+                #principalData{
+
+                    img{
+                        width: 38%;
+                    }
+                }
+            }
+
+            .weekContainer{
+                display: block;
+                
+               .dayContainer{
+                margin: 0 auto;
+                width: 210px;
+
+                p{
+                    font-size: 20px;
+                }
+               }
+            }
+        }
+}
+@media screen and (max-width: 1220px){
+    body{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+
+        .container{
+            width: 80%;
+        }
+        #extraData{
+            padding-left: 20px; 
+
+            // #humidity{
+               
+            // }
+
+            #wind{
+                padding-right: 20px;
+            }
+        }
+        .weekContainer{
+            display: block;
+
+            .dayContainer{
+                margin: 0 auto;
+                width: 210px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 880px){
+    body{
+        #extraData{
+            padding-left: 20px; 
+
+            #infoHumidity{
+                width: 50%;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 465px){
+    body{
+        .container{
+            width: 90%;
+        }
+        #extraData{
+            padding-left: 20px; 
+
+            #infoHumidity{
+                width: 50%;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+@media screen and (max-width: 395px){
+    body{
+        .container{
+            width: 90%;
+        }
+        #extraData{
+            padding-left: 20px; 
+            font-size: 15px;
+            
+
+            i{
+                font-size: 30px;
+            }
+
+            #infoHumidity{
+                width: 50%;
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

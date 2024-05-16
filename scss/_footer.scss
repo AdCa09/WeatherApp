@@ -1,0 +1,16 @@
+footer{
+    padding-top: 20px;
+    text-align: center;
+    a{
+        text-decoration: none;
+        color: white;
+        padding-right: 10px;
+        font-size: 18px;
+
+        &:hover{
+            transform: scale(1.5);
+            color: rgb(180, 180, 180);
+        }
+    }
+
+}

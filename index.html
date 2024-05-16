@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <script src="https://kit.fontawesome.com/81d845de65.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather app</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/169/169367.png" type="image/x-icon" />
     <script src="./js/script.js" defer></script>
+    <script src="./js/localStorage.js" defer></script>
   </head>
   <body>
       <header>
             <section id="weatherInput">
                   <i class="fa fa-map-marker"></i>
                   <input type="text" placeholder="enter a city" id="inputHeader">
-                  <button class="fa fa-search"></a>
-                </section>
-                
+                  <button class="fa fa-search"></button>
+            </section>
       </header>
     <div class="container">
-        
       <section id="principalData">
-            <p id="location">test</p>
-            <img src="./img/earth-1179212.png" alt="" width="250px">
+            <p id="location"></p>
+            <img src="./img/earth-1179212.png" alt="earth image" width="250">
             <div>
-                <p id="actualStatus">test</p>
-                <p id="temperature"><span>10°C</span></p>
+                <p id="actualStatus"></p>
+                <p id="temperature"><span></span></p>
             </div>
         </section>
 
@@ -54,35 +53,40 @@
  </div>
  <div class="weekContainer">
     <div class="dayContainer">
-      <h2>Day 1</h2>
+      <h2></h2>
       <img src="" alt="">
-      <p class="temperatureDay1">°C</p>
+      <p class="temperatureDay">°C</p>
       <p class="dayStatus"></p>
     </div>
     <div class="dayContainer">
-      <h2>Day 2</h2>
+      <h2></h2>
       <img src="" alt="">
-      <p class="temperatureDay2">°C</p>
+      <p class="temperatureDay">°C</p>
       <p class="dayStatus"></p>
     </div>
     <div class="dayContainer">
-      <h2>Day 3</h2>
+      <h2></h2>
       <img src="" alt="">
-      <p class="temperatureDay3">°C</p>
+      <p class="temperatureDay">°C</p>
       <p class="dayStatus"></p>
     </div>
     <div class="dayContainer">
-      <h2>Day 4</h2>
+      <h2></h2>
       <img src="" alt="">
-      <p class="temperatureDay4">°C</p>
+      <p class="temperatureDay">°C</p>
       <p class="dayStatus"></p>
     </div>
     <div class="dayContainer">
-      <h2>Day 5</h2>
+      <h2></h2>
       <img src="" alt="">
-      <p class="temperatureDay5">°C</p>
+      <p class="temperatureDay">°C</p>
       <p class="dayStatus"></p>
     </div>
   </div>
+
+  <footer>
+    <a href="https://github.com/AdCa09" class="fa fa-github" ></a>
+    <a href="https://www.linkedin.com/in/adrien-c-2399431b7/" class="fa fa-linkedin"></a>
+  </footer>
   </body>
 </html>
