@@ -82,7 +82,9 @@ header #weatherInput button {
 body {
   margin: 10px;
   align-items: center;
-  background-color: rgb(101, 185, 241);
+  background: url("https://as1.ftcdn.net/v2/jpg/02/11/52/42/1000_F_211524227_Ett8aboQvVnROAFtqu3S1pW99Y3Th9vm.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 body .container {
   position: relative;
@@ -166,9 +168,10 @@ body #extraData #wind {
 .weekContainer .dayContainer {
   background-color: rgba(176, 176, 176, 0.6196078431);
   width: 150px;
-  height: 250px;
+  height: 260px;
   color: white;
   border-radius: 10px;
+  padding: 0 10px;
 }
 .weekContainer .dayContainer h2 {
   text-align: center;
@@ -238,6 +241,7 @@ body #extraData #wind {
   body .weekContainer .dayContainer {
     margin: 0 auto;
     width: 210px;
+    height: 220px;
   }
 }
 @media screen and (max-width: 880px) {
@@ -262,6 +266,9 @@ body #extraData #wind {
   }
 }
 @media screen and (max-width: 395px) {
+  body H2 {
+    padding-top: 10px;
+  }
   body .container {
     width: 90%;
   }

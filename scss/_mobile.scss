@@ -50,10 +50,6 @@
         #extraData{
             padding-left: 20px; 
 
-            // #humidity{
-               
-            // }
-
             #wind{
                 padding-right: 20px;
             }
@@ -64,6 +60,8 @@
             .dayContainer{
                 margin: 0 auto;
                 width: 210px;
+                height: 220px;
+               
             }
         }
     }
@@ -98,6 +96,9 @@
 }
 @media screen and (max-width: 395px){
     body{
+        H2{
+            padding-top: 10px;
+        }
         .container{
             width: 90%;
         }

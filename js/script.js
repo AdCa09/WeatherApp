@@ -49,7 +49,7 @@ function fetchCityImage(city) {
 }
 
 function updateBackgroundImage(imageUrl) {
-    
+
     document.body.style.opacity = '0';
     document.body.style.backgroundImage = `url('${imageUrl}')`;
     document.body.style.backgroundSize = 'cover';
@@ -58,7 +58,7 @@ function updateBackgroundImage(imageUrl) {
     //Timeout avant la prochaine image 
     setTimeout(() => {
         document.body.style.opacity = '1';
-    }, 100); 
+    }, 100);
 }
 
 let spanTemp = document.getElementById('temperature');
@@ -67,8 +67,11 @@ function temperature(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherKey}&units=metric`)
         .then((response) => response.json())
         .then(data => {
-            const airTemp = data.main.temp;
+            let airTemp = data.main.temp;
+            airTemp = Math.round(airTemp);
             spanTemp.textContent = airTemp + ' °C';
+
+
         })
         .catch(error => {
             console.error('Une erreur s\'est produite lors de la récupération des données de température :', error);
@@ -114,8 +117,13 @@ function fetchWeeklyWeather(city) {
 
 
                 const temperatureElement = dayContainer.querySelector('.temperatureDay');
-                temperatureElement.textContent = forecast.main.temp + '°C';
+                let forecastAdd = forecast.main.temp;
 
+                forecastAdd = Math.round(forecastAdd);// Math.round pour arrondir à l'entier le plus proche
+
+                temperatureElement.textContent = forecastAdd + '°C';
+
+                Math.round()
 
                 const weatherDescription = forecast.weather[0].description;
                 const dayStatusElement = dayContainer.querySelector('.dayStatus');
@@ -134,43 +142,43 @@ function imageStatus(city) {
     dayStatusElements.forEach((dayStatusElement, index) => {
         let image = document.querySelectorAll('.dayContainer img')[index];
 
-        // Vérifiez le statut météorologique pour chaque jour
+        // Vérifie le statut météorologique pour chaque jour
         if (dayStatusElement.textContent.trim() === 'clear sky') {
-            // Mettre à jour l'attribut src de l'image avec l'URL de l'image correspondant à 'clear sky'
+            // Mets à jour l'attribut src de l'image avec l'URL de l'image correspondant à 'clear sky'
             image.src = 'https://www.svgheart.com/wp-content/uploads/2020/09/sun-free-svg-file.png';
             image.height = 90;
         }
-        if(dayStatusElement.textContent.trim() === 'broken clouds'){
+        if (dayStatusElement.textContent.trim() === 'broken clouds') {
             image.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Cartoon_cloud.svg/1200px-Cartoon_cloud.svg.png'
             image.height = 90;
             image.left = 20 + '%';
         }
-        if(dayStatusElement.textContent.trim() === 'overcast clouds'){
+        if (dayStatusElement.textContent.trim() === 'overcast clouds') {
             image.src = 'https://cdn-icons-png.flaticon.com/512/5712/5712721.png'
             image.height = 90;
             image.left = 20 + '%';
         }
-        if(dayStatusElement.textContent.trim() === 'light rain' || dayStatusElement.textContent.trim() === 'rain' || dayStatusElement.textContent.trim() === 'shower rain'|| dayStatusElement.textContent.trim() === 'moderate rain' || dayStatusElement.textContent.trim() === 'heavy intensity rain' || dayStatusElement.textContent.trim() === 'drizzle'){
-            image.src = 'https://cdn1.iconfinder.com/data/icons/weather-189/64/weather-icons-rainy-512.png'
+        if (dayStatusElement.textContent.trim() === 'light rain' || dayStatusElement.textContent.trim() === 'rain' || dayStatusElement.textContent.trim() === 'shower rain' || dayStatusElement.textContent.trim() === 'moderate rain' || dayStatusElement.textContent.trim() === 'heavy intensity rain' || dayStatusElement.textContent.trim() === 'drizzle') {
+            image.src = 'https://freepngimg.com/thumb/artwork/88591-animation-leaf-cloud-rain-area-free-download-png-hq.png'
             image.height = 90;
             image.left = 20 + '%';
         }
-        if(dayStatusElement.textContent.trim() === 'few clouds'){
+        if (dayStatusElement.textContent.trim() === 'few clouds') {
             image.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Gnome-weather-few-clouds.svg/768px-Gnome-weather-few-clouds.svg.png'
             image.height = 90;
             image.left = 20 + '%';
         }
-        if(dayStatusElement.textContent.trim() === 'snow'){
+        if (dayStatusElement.textContent.trim() === 'snow') {
             image.src = 'https://www.svgrepo.com/show/370930/weather-snow.svg'
             image.height = 90;
             image.left = 20 + '%';
         }
-        if(dayStatusElement.textContent.trim() === 'scattered clouds'){
+        if (dayStatusElement.textContent.trim() === 'scattered clouds') {
             image.src = ' https://cdn-icons-png.flaticon.com/512/414/414927.png'
             image.height = 90;
             image.left = 20 + '%';
         }
-       
+
     });
 }
 
@@ -202,7 +210,7 @@ const success = (position) => {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
-    // Appeler fetchData avec les coordonnées de latitude et de longitude
+    // Appele fetchData avec les coordonnées de latitude et de longitude
     fetchDataByCoordinates(latitude, longitude);
 };
 
@@ -219,16 +227,15 @@ function fetchDataByCoordinates(latitude, longitude) {
             const airTemp = data.main.temp;
             spanTemp.textContent = airTemp + ' °C';
 
-            // Appele les autres fonctions pour récupérer les autres informations météorologiques
-            humidity(data.name); // Utilise le nom de la ville retourné par l'API actuelle pour récupérer l'humidité
-            actualWind(data.name); // Utilise le nom de la ville retourné par l'API actuelle pour récupérer la vitesse du vent
-            fetchCityImage(data.name); // Utilise le nom de la ville retourné par l'API actuelle pour récupérer une image de la ville
-            temperature(data.name); // Utilise le nom de la ville retourné par l'API actuelle pour récupérer la température
-            fetchWeeklyWeather(data.name); // Utilise le nom de la ville retourné par l'API actuelle pour récupérer les prévisions météorologiques pour une semaine
-            actualDay(); // Appele la fonction pour mettre à jour les jours de la semaine
-            imageStatus(data.name); // Utilise le nom de la ville retourné par l'API actuelle pour mettre à jour les images de statut météorologique
+            humidity(data.name);
+            actualWind(data.name);
+            fetchCityImage(data.name);
+            temperature(data.name);
+            fetchWeeklyWeather(data.name);
+            actualDay();
+            imageStatus(data.name);
             title.innerHTML = (data.name);
-            
+
         })
         .catch(error => {
             console.error('Une erreur s\'est produite lors de la récupération des données météorologiques :', error);
@@ -239,6 +246,6 @@ actualPosition();
 
 let mapIcon = document.querySelector('.fa-map-marker');
 
-mapIcon.addEventListener('click', function(){
+mapIcon.addEventListener('click', function () {
     actualPosition();
 });
