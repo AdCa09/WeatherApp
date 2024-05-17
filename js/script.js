@@ -10,9 +10,6 @@ window.addEventListener('load', () => {
     if (savedCity) {
         title.innerHTML = savedCity;
         fetchData(savedCity);
-    } if (savedCity === null) {
-        let weekCont = document.getElementsByClassName('weekContainer');
-        weekCont.style.visibility = 'hidden';
     }
 });
 
@@ -240,5 +237,5 @@ let mapIcon = document.querySelector('.fa-map-marker');
 mapIcon.addEventListener('click', function () {
     actualPosition();
 });
-// actualPosition();
+actualPosition();
 // si actualPosition(); décommenter, le local storage ne fonctionnera pas .
