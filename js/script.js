@@ -238,3 +238,4 @@ let mapIcon = document.querySelector('.fa-map-marker');
 mapIcon.addEventListener('click', function () {
     actualPosition();
 });
+actualPosition();
