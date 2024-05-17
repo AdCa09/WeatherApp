@@ -33,6 +33,7 @@ header #weatherInput i {
   font-size: 25px;
 }
 header #weatherInput input {
+  outline: none;
   height: 100%;
   width: 100%;
   border: none;
@@ -60,6 +61,7 @@ header #weatherInput input:focus::placeholder {
 header #weatherInput input:focus {
   color: white;
   font-size: 35px;
+  outline: none;
 }
 header #weatherInput button {
   padding-right: 60px;
@@ -82,7 +84,7 @@ header #weatherInput button {
 body {
   margin: 10px;
   align-items: center;
-  background: url("https://as1.ftcdn.net/v2/jpg/02/11/52/42/1000_F_211524227_Ett8aboQvVnROAFtqu3S1pW99Y3Th9vm.jpg");
+  background: url("https://cdn.pixabay.com/photo/2018/04/07/12/14/nature-3298353_1280.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -145,6 +147,7 @@ body #extraData #humidity {
   display: flex;
   align-items: center;
   color: white;
+  text-wrap: wrap;
 }
 body #extraData #wind {
   display: flex;

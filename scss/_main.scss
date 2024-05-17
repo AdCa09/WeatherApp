@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Briem+Hand:wght@100..900&family=Lilita+One&display=swap");
-@import "./_mixins.scss";
 
 * {
   padding: 0;
@@ -10,7 +9,7 @@
 body {
   margin: 10px;
   align-items: center;
-  background: url('https://as1.ftcdn.net/v2/jpg/02/11/52/42/1000_F_211524227_Ett8aboQvVnROAFtqu3S1pW99Y3Th9vm.jpg');
+  background: url('https://cdn.pixabay.com/photo/2018/04/07/12/14/nature-3298353_1280.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -79,12 +78,15 @@ body {
     }
 
     #humidity {
-      @include position;
+      display: flex;
+      align-items: center;
       color: white;
+      text-wrap: wrap;
     }
 
     #wind {
-      @include position;
+      display: flex;
+      align-items: center;
       position: absolute;
       top: 0;
       right: 0;

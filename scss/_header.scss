@@ -17,7 +17,7 @@ header{
     }
 
     input {
-        
+        outline: none;
         height: 100%;
         width: 100%;
         border: none;
@@ -38,6 +38,7 @@ header{
         &:focus{
             color: white;
             font-size: 35px;
+            outline: none;
         }
     }
 
