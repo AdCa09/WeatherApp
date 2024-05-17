@@ -4,13 +4,15 @@ alert('Please allow the position for a better user exeperience')
 let input = document.querySelector('input');
 let buttonSearch = document.querySelector('button');
 let title = document.getElementById('location');
-
-// Charger la ville sauvegardée au démarrage
+// Charge la ville sauvegardée au démarrage
 window.addEventListener('load', () => {
     const savedCity = localStorage.getItem('savedCity');
     if (savedCity) {
         title.innerHTML = savedCity;
         fetchData(savedCity);
+    } if (savedCity === null) {
+        let weekCont = document.getElementsByClassName('weekContainer');
+        weekCont.style.visibility = 'hidden';
     }
 });
 
@@ -28,11 +30,11 @@ buttonSearch.addEventListener('click', function () {
 });
 
 function handleCityInput() {
-    const city = input.value.trim(); // Enlever les espaces superflus
+    const city = input.value.trim();
     if (city) {
-        title.innerHTML = city; // Affiche la ville saisie
-        localStorage.setItem('savedCity', city); // Sauvegarder la ville dans localStorage
-        fetchData(city); // Appelle fetchData avec la ville saisie
+        title.innerHTML = city;
+        localStorage.setItem('savedCity', city);
+        fetchData(city);
         input.value = ''; // Réinitialise l'input après avoir quitté
     }
 }
@@ -190,7 +192,7 @@ function actualDay() {
     });
     let date = new Date();
     for (let i = 0; i < 5; i++) {
-        let dateActu = date.toLocaleDateString('eu-EU', {
+        let dateActu = date.toLocaleDateString('fr-FR', {
             weekday: 'short',
             day: 'numeric',
             month: 'short',
@@ -238,4 +240,5 @@ let mapIcon = document.querySelector('.fa-map-marker');
 mapIcon.addEventListener('click', function () {
     actualPosition();
 });
-actualPosition();
+// actualPosition();
+// si actualPosition(); décommenter, le local storage ne fonctionnera pas .

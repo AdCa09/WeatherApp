@@ -41,6 +41,7 @@ header #weatherInput input {
   text-align: center;
   font-size: 35px;
   color: white;
+  text-transform: uppercase;
 }
 header #weatherInput input::-moz-placeholder {
   color: white;
@@ -119,12 +120,12 @@ body #principalData #temperature {
   font-size: 30px;
   color: white;
   flex-direction: column;
-  padding-left: 20px;
 }
 body #principalData #location {
   font-size: 40px;
   color: white;
   flex-direction: column;
+  text-transform: uppercase;
 }
 body #extraData {
   display: flex;
@@ -169,7 +170,7 @@ body #extraData #wind {
   transition: opacity 1.3s ease-in-out;
 }
 .weekContainer .dayContainer {
-  background-color: rgba(176, 176, 176, 0.6196078431);
+  background-color: rgba(216, 216, 216, 0.62);
   width: 150px;
   height: 260px;
   color: white;
