@@ -1,6 +1,6 @@
 const accessKey = 'UEohjsn4fKHHV1BYUIil-XbcCcEs2cmzoE0nP-cVn8s';
 const weatherKey = 'aeee27fc8c2c81bd6bba8d74d24cd65f';
-
+alert('Please allow the position for a better user exeperience')
 let input = document.querySelector('input');
 let buttonSearch = document.querySelector('button');
 let title = document.getElementById('location');
